@@ -415,6 +415,15 @@ Removing `SharedArrayBuffer` and reducing resolution of `performance.now()` to
 20µs plus random jitter. This makes the attacks harder (but is not a perfect
 fix).
 
+## Future Speculation
+
+[BTI], [PRIV-READ], and [PRIV-REG] are CPU implementation bugs that are easily
+fixable in newer silicon (with some OS support for [BTI]). [MISPREDICT] is,
+however, inherent in how modern speculation works, and may change how we have to
+think about writing secure code in the future, much like how we think about
+memory races and atomicity in multithreaded code today. I expect we'll end up
+seeing speculation guard compiler intrinsics in the future and teaching people
+to use them.
 
 ## References
 
