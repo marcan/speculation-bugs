@@ -315,6 +315,8 @@ Type="REG_DWORD”
 Data="0x00000000”
 ```
 
+May also [contain IBRS support](https://twitter.com/aionescu/status/948818841747955713)?
+
 ## CPU Vendor response
 
 ### Intel
