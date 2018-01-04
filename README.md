@@ -192,9 +192,9 @@ is being read.
 
 ### AMD
 
-| CPU/µArch                      | MISPREDICT | BTI   | PRIV-LOAD | PRIV-REG |
-| ------------------------------ | ---------- | ----- | --------- | -------- |
-| Ryzen                          | Y          | Y?    | N         |          |
+| CPU/µArch                      | MISPREDICT | BTI                      | PRIV-LOAD | PRIV-REG |
+| ------------------------------ | ---------- | ------------------------ | --------- | -------- |
+| Ryzen                          | Y          | Y?<sup>[1](#amd-1)</sup> | N         |          |
 
 ### ARM
 
