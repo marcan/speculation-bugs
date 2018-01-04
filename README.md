@@ -370,7 +370,7 @@ Performance impact unknown.
 
 * [ARM Processor Security Update](https://developer.arm.com/support/security-update)
 
-Comprehensive list of affected AMD CPUs.
+Comprehensive list of affected ARM CPUs.
 
 For [MISPREDICT], ARM recommends using a newly defined barrier `CSDB` together
 with a conditional move to guard the loaded value with the preceding condition.
