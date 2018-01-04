@@ -43,6 +43,7 @@ the value to be leaked.
 
 Google name: **Variant 1: Bounds check bypass**\
 Research name: **Spectre**
+CVE: **CVE-2017-5753**
 
 The CPU mispredicts a branch and speculatively executes code which leaks
 sensitive data into a data cache load.
@@ -101,6 +102,7 @@ likely to be dangerous and insert the appropriate serialization instructions.
 
 Google name: **Variant 2: Branch target injection**\
 Research name: **Spectre**
+CVE: **CVE-2017-5715**
 
 The CPU indirect branch predictor can be "trained" to mis-predict an indirect
 branch into an attacker-controlled destination. This can then leak data via the
@@ -139,6 +141,7 @@ process/protection key).
 
 Google name: **Variant 3: Rogue data cache load**\
 Research name: **Meltdown**
+CVE: **CVE-2017-5754**
 
 Some CPUs will perform speculative memory reads from memory that the current
 context does not have access to read. While these accesses will ultimately fail,
