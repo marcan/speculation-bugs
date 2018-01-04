@@ -347,7 +347,32 @@ that might hold virtual kernel addresses while in usermode (e.g. ensure
 
 ## Software/Service Vendor response
 
-TODO
+### Google Chrome
+
+* [Actions Required to Mitigate Speculative Side-Channel Attack Techniques](https://www.chromium.org/Home/chromium-security/ssca)
+
+Enable Site Isolation in `chrome://flags` to prevent cross-origin exploitation
+of same-process vulns (e.g. JIT).
+
+Starting with Chrome 64, the V8 JS engine will have additional mitigations
+(which?). Also `SharedArrayBuffer` is being disabled. This makes the attacks
+harder (but is not a perfect fix).
+
+### Mozilla Firefox
+
+* [Mitigations landing for new class of timing attack](https://blog.mozilla.org/security/2018/01/03/mitigations-landing-new-class-timing-attack/)
+
+Removing `SharedArrayBuffer` and reducing resolution of `performance.now()` to
+20µs. This makes the attacks harder (but is not a perfect fix).
+
+### Microsoft Edge / IE
+
+* [Mitigating speculative execution side-channel attacks in Microsoft Edge and Internet Explorer](https://blogs.windows.com/msedgedev/2018/01/03/speculative-execution-mitigations-microsoft-edge-internet-explorer/)
+
+Removing `SharedArrayBuffer` and reducing resolution of `performance.now()` to
+20µs plus random jitter. This makes the attacks harder (but is not a perfect
+fix).
+
 
 ## References
 
@@ -358,3 +383,6 @@ TODO
 * [ARM Cache-speculation Side-channels whitepaper](https://developer.arm.com/-/media/Files/pdf/Cache_Speculation_Side-channels.pdf?revision=966364ce-10aa-4580-8431-7e4ed42fb90b&la=en)
 * [AMD Update on Processor Security](https://www.amd.com/en/corporate/speculative-execution)
 * [Windows 10 KB4056892](https://support.microsoft.com/en-us/help/4056892/windows-10-update-kb4056892)
+* [Chrome: Actions Required to Mitigate Speculative Side-Channel Attack Techniques](https://www.chromium.org/Home/chromium-security/ssca)
+* [Mozilla: Mitigations landing for new class of timing attack](https://blog.mozilla.org/security/2018/01/03/mitigations-landing-new-class-timing-attack/)
+* [MS Edge/IE: Mitigating speculative execution side-channel attacks in Microsoft Edge and Internet Explorer](https://blogs.windows.com/msedgedev/2018/01/03/speculative-execution-mitigations-microsoft-edge-internet-explorer/)
