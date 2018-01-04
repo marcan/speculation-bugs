@@ -315,8 +315,31 @@ Data="0x00000000”
 PR fluff. No real content. Tries to deflect blame. No useful technical
 information.
 
-Microcode patches to mitigate some issues are reportedly trickling down, but no
-official word is available on that.
+* [Intel Issues Updates to Protect Systems from Security Exploits](https://newsroom.intel.com/news-releases/intel-issues-updates-protect-systems-security-exploits/)
+* [Intel Analysis of Speculative Execution Side Channels](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/01/Intel-Analysis-of-Speculative-Execution-Side-Channels.pdf)
+
+For [MISPREDICT], recommends an `LFENCE` barrier.
+
+For [BTI], Intel is introducing new interfaces to the CPU through microcode:
+
+* `IBRS`: Indirect Branch Restricted Speculation: Marketing-speak for "we
+flipped a chicken bit", presumably.
+* `STIBP`: Single Thread Indirect Branch Predictors isolates branch prediction
+state between two hyperthreads.
+* `IBPB`: Indirect Branch Predictor Barrier instruction prevents leakage of
+indirect branch predictor state across contexts (for use on context/privilege
+switches).
+
+Alternatively, Intel is recommending retpolines for [BPI], especially on current
+processors where that may be faster than the microcode patches for `IBPB`.
+Retpolines also require a microcode patch on Broadwell and newer CPUs,
+presumably because on those even `ret` ends up being predicted in an exploitable
+way.
+
+For [PRIV-LOAD], Intel recommends KPTI. Processors supporting PCID have reduced
+performance impact. Future CPUs will have a hardware fix.
+
+TODO: further info on microcode updates released.
 
 ### AMD
 
