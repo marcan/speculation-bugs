@@ -42,7 +42,7 @@ the value to be leaked.
 ### [MISPREDICT] Branch mis-prediction leaks subsequent data
 
 Google name: **Variant 1: Bounds check bypass**\
-Research name: **Spectre**
+Research name: **Spectre**\
 CVE: **CVE-2017-5753**
 
 The CPU mispredicts a branch and speculatively executes code which leaks
@@ -101,7 +101,7 @@ likely to be dangerous and insert the appropriate serialization instructions.
 ### [BTI] Branch Target Injection
 
 Google name: **Variant 2: Branch target injection**\
-Research name: **Spectre**
+Research name: **Spectre**\
 CVE: **CVE-2017-5715**
 
 The CPU indirect branch predictor can be "trained" to mis-predict an indirect
@@ -140,7 +140,7 @@ process/protection key).
 ### [PRIV-LOAD] Privileged data reads from unprivileged code
 
 Google name: **Variant 3: Rogue data cache load**\
-Research name: **Meltdown**
+Research name: **Meltdown**\
 CVE: **CVE-2017-5754**
 
 Some CPUs will perform speculative memory reads from memory that the current
