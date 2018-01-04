@@ -289,7 +289,8 @@ impact for every indirect branch. Requires recompiling all affected software
 
 This is microarchitecture-specific and thus not necessarily applicable to other
 CPUs. Kernel implementation will likely enable it only when a vulnerable CPU is
-detected.
+detected. In fact, it's insufficient on Skylake and newer CPUs, where even `ret`
+may predict from the indirect branch predictor as a fallback; those need IBRS.
 
 ### [BTI] Linux: IBRS patch series
 
