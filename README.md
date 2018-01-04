@@ -291,6 +291,15 @@ This is microarchitecture-specific and thus not necessarily applicable to other
 CPUs. Kernel implementation will likely enable it only when a vulnerable CPU is
 detected.
 
+### [BTI] Linux: IBRS patch series
+
+[Patchset](https://lkml.org/lkml/2018/1/4/615) (under review).
+
+Support for Intel's architectural mitigation in lieu of retpolines. Required
+on Skylake and newer, where even retpolines may be vulnerable. Requires
+microcode update on current CPUs. Perf hit vs. retpolines on older CPUs. Future
+CPUs will have "cheap" support.
+
 ### [PRIV-LOAD] Windows: KB4056892 (OS Build 16299.192)
 
 Out-of-band update. Presumably does roughly the same thing as KPTI.
