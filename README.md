@@ -288,9 +288,20 @@ This is microarchitecture-specific and thus not necessarily applicable to other
 CPUs. Kernel implementation will likely enable it only when a vulnerable CPU is
 detected.
 
-### [PRIV-LOAD] Windows: ....
+### [PRIV-LOAD] Windows: KB4056892 (OS Build 16299.192)
 
-TODO
+Out-of-band update. Presumably does roughly the same thing as KPTI.
+
+Some AV software is incompatible (probably due to evil kernel hooks). AV users
+require this registry key to be set for the fix to be enabled:
+
+```
+Key="HKEY_LOCAL_MACHINE"
+Subkey="SOFTWARE\Microsoft\Windows\CurrentVersion\QualityCompat"
+Value Name="cadca5fe-87d3-4b96-b7fb-a231484277cc"
+Type="REG_DWORD”
+Data="0x00000000”
+```
 
 ## CPU Vendor response
 
@@ -346,3 +357,4 @@ TODO
 * [ARM Processor Security Update](https://developer.arm.com/support/security-update)
 * [ARM Cache-speculation Side-channels whitepaper](https://developer.arm.com/-/media/Files/pdf/Cache_Speculation_Side-channels.pdf?revision=966364ce-10aa-4580-8431-7e4ed42fb90b&la=en)
 * [AMD Update on Processor Security](https://www.amd.com/en/corporate/speculative-execution)
+* [Windows 10 KB4056892](https://support.microsoft.com/en-us/help/4056892/windows-10-update-kb4056892)
