@@ -351,6 +351,10 @@ Assume vulnerable unless proven otherwise.
 
 AMD CPUs are affected by [MISPREDICT] and not affected by [PRIV-LOAD].
 
+TODO: [Gentoo bug 643476](https://bugs.gentoo.org/643476) claims microcode
+update to disable branch prediction (entirely?) on family 17h is available.
+Performance impact unknown.
+
 ### ARM
 
 * [ARM Processor Security Update](https://developer.arm.com/support/security-update)
