@@ -415,6 +415,20 @@ Removing `SharedArrayBuffer` and reducing resolution of `performance.now()` to
 20µs plus random jitter. This makes the attacks harder (but is not a perfect
 fix).
 
+### Google (all products)
+
+* [Google’s Mitigations Against CPU Speculative Execution Attack Methods](https://support.google.com/faqs/answer/7622138)
+
+Summary:
+
+* Android: 2018-01-05 Security Patch Level mitigates by restricting high
+precision timers. KPTI not included yet.
+* Chrome OS: Version 63 includes KPTI on Intel machines with kernel 3.18/4.4.
+* Cloud: Infrastructure has been hitlessly patched. Guest instances for
+Cloud Dataflow/Cloud Datalab/Cloud Dataproc/Cloud Launcher/Cloud Machine
+Learning Engine/Compute Engine/Kubernetes Engine need to be updated/restarted
+with fixes.
+
 ## Future Speculation
 
 [BTI], [PRIV-READ], and [PRIV-REG] are CPU implementation bugs that are easily
