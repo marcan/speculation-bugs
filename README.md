@@ -226,8 +226,7 @@ Platforms:
 * AMD PRO CPU
 * ARM Cortex A57
 
-Not an actual attack against real software, just a PoC of the concept with
-synthetic code.
+Not an actual attack against real software, just a PoC with synthetic code.
 
 ### [MISPREDICT] Google Project Zero: arbitrary kernel reads with eBPF JIT
 
