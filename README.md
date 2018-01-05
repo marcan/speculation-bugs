@@ -587,6 +587,15 @@ Preliminary [Advisory](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/Spectr
 [Advisory](https://www.vmware.com/us/security/advisories/VMSA-2018-0002.html) and patches for ESXi 5.5, 6.0 and 6.5 released.
 Patch for ESXi 5.5 lacks mitigation for CVE-2017-5753.
 
+### Xen
+
+* [Xen Project Spectre/Meltdown FAQ](https://blog.xenproject.org/2018/01/04/xen-project-spectremeltdown-faq/)
+* [XSA=254](http://xenbits.xen.org/xsa/advisory-254.html)
+
+64-bit PV mode VMs can attack Xen with [PRIV-READ], but are immune to userspace
+attacks. Other VM modes are the opposite: the guest kernel is vulnerable to
+userspace attacks, but cannot attack Xen.
+
 ### Cisco
 
 [Advisory](https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180104-cpusidechannel) released, but no mitigations or vulnerable product confirmation so far.
