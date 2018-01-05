@@ -464,6 +464,15 @@ Cloud Dataflow/Cloud Datalab/Cloud Dataproc/Cloud Launcher/Cloud Machine
 Learning Engine/Compute Engine/Kubernetes Engine need to be updated/restarted
 with fixes.
 
+### Apple
+
+* [About speculative execution vulnerabilities in ARM-based and Intel CPUs](https://support.apple.com/en-us/HT208394)
+
+Mitigations for [PRIV-READ] shipped in iOS 11.2, macOS 10.13.2, and tvOS 11.2.
+watchOS is not impacted. Claims no performance impact.
+
+Safari mitigations incoming for [BTI] and [MISPREDICT]. <2.5% perf impact.
+
 ## Future Speculation
 
 [BTI], [PRIV-READ], and [PRIV-REG] are CPU implementation bugs that are easily
