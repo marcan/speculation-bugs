@@ -1,25 +1,3 @@
-Table of Contents
-=================
-
-   * [CPU security bugs caused by speculative execution](#cpu-security-bugs-caused-by-speculative-execution)
-      * [Common attack characteristics](#common-attack-characteristics)
-      * [Attacks](#attacks)
-         * [[MISPREDICT] Branch mis-prediction leaks subsequent data](#mispredict-branch-mis-prediction-leaks-subsequent-data)
-         * [[BTI] Branch Target Injection](#bti-branch-target-injection)
-         * [[PRIV-LOAD] Privileged data reads from unprivileged code](#priv-load-privileged-data-reads-from-unprivileged-code))
-         * [[PRIV-REG] Privileged register reads from unprivileged code](#priv-reg-privileged-register-reads-from-unprivileged-code)
-      * [Impacted CPU matrix](#impacted-cpu-matrix)
-      * [PoCs](#pocs)
-      * [Deployed or in-development mitigations](#deployed-or-in-development-mitigations)
-         * [[PRIV-LOAD] Linux: KPTI](#priv-load-linux-kpti)
-         * [[BTI] Linux: retpolines](#bti-linux-retpolines)
-         * [[BTI] Linux: IBRS patch series](#bti-linux-ibrs-patch-series)
-         * [[PRIV-LOAD] Windows: KB4056892 (OS Build 16299.192)](#priv-load-windows-kb4056892-os-build-16299192)
-      * [CPU Vendor response](#cpu-vendor-response)
-      * [Software/Service Vendor response](#softwareservice-vendor-response)
-      * [Future Speculation](#future-speculation)
-      * [References](#references)
-      
 # CPU security bugs caused by speculative execution
 
 This repo is an attempt to collect information on the class of information
@@ -33,6 +11,27 @@ subclasses of attacks.
 This is a combination of publicly available information and educated guesses/
 speculation based on the nature of the attacks. Pull requests with corrections
 or discussion are welcome.
+
+Table of Contents
+=================
+
+   * [Common attack characteristics](#common-attack-characteristics)
+   * [Attacks](#attacks)
+      * [[MISPREDICT] Branch mis-prediction leaks subsequent data](#mispredict-branch-mis-prediction-leaks-subsequent-data)
+      * [[BTI] Branch Target Injection](#bti-branch-target-injection)
+      * [[PRIV-LOAD] Privileged data reads from unprivileged code](#priv-load-privileged-data-reads-from-unprivileged-code))
+      * [[PRIV-REG] Privileged register reads from unprivileged code](#priv-reg-privileged-register-reads-from-unprivileged-code)
+   * [Impacted CPU matrix](#impacted-cpu-matrix)
+   * [PoCs](#pocs)
+   * [Deployed or in-development mitigations](#deployed-or-in-development-mitigations)
+      * [[PRIV-LOAD] Linux: KPTI](#priv-load-linux-kpti)
+      * [[BTI] Linux: retpolines](#bti-linux-retpolines)
+      * [[BTI] Linux: IBRS patch series](#bti-linux-ibrs-patch-series)
+      * [[PRIV-LOAD] Windows: KB4056892 (OS Build 16299.192)](#priv-load-windows-kb4056892-os-build-16299192)
+   * [CPU Vendor response](#cpu-vendor-response)
+   * [Software/Service Vendor response](#softwareservice-vendor-response)
+   * [Future Speculation](#future-speculation)
+   * [References](#references)
 
 ## Common attack characteristics
 
