@@ -422,6 +422,21 @@ having the kernel use dummy values or a different virtual base for registers
 that might hold virtual kernel addresses while in usermode (e.g. ensure
 `VBAR_EL1` doesn't leak the true main kernel base).
 
+### IBM
+
+No response.
+
+### Nvidia
+
+* [NVIDIA's response to speculative side channels](http://nvidia.custhelp.com/app/answers/detail/a_id/4609)
+
+GPUs not affected. SoC info and mitigations work in progress. Pending further
+info.
+
+### Apple
+
+No response on the CPU side of things for Apple's custom ARM cores.
+
 ## Software/Service Vendor response
 
 ### Google Chrome
