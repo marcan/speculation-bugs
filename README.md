@@ -265,7 +265,9 @@ See [ARM Vendor Response](#arm-1) for source.
 ### IBM
 
 Red Hat [says](https://access.redhat.com/security/vulnerabilities/speculativeexecution)
-System Z, POWER8, POWER9 are affected. No further info.
+System Z, POWER8, POWER9 are affected.
+
+IBM says firmware patches will be available January 9 for POWER7 and up:  https://www.ibm.com/blogs/psirt/potential-impact-processors-power-family/
 
 ### Apple
 
@@ -428,7 +430,7 @@ state between two hyperthreads.
 indirect branch predictor state across contexts (for use on context/privilege
 switches).
 
-Alternatively, Intel is recommending retpolines for [BPI], especially on current
+Alternatively, Intel is recommending retpolines for [BTI], especially on current
 processors where that may be faster than the microcode patches for `IBPB`.
 Retpolines also require a microcode patch on Broadwell and newer CPUs,
 presumably because on those even `ret` ends up being predicted in an exploitable
@@ -509,6 +511,8 @@ harder (but is not a perfect fix).
 Removing `SharedArrayBuffer` and reducing resolution of `performance.now()` to
 20µs. This makes the attacks harder (but is not a perfect fix).
 
+Starting with Firefox 57.0.4, [both techniques are enabled](https://www.mozilla.org/en-US/security/advisories/mfsa2018-01/).
+
 ### Microsoft Edge / IE
 
 * [Mitigating speculative execution side-channel attacks in Microsoft Edge and Internet Explorer](https://blogs.windows.com/msedgedev/2018/01/03/speculative-execution-mitigations-microsoft-edge-internet-explorer/)
@@ -539,6 +543,23 @@ Mitigations for [PRIV-READ] shipped in iOS 11.2, macOS 10.13.2, and tvOS 11.2.
 watchOS is not impacted. Claims no performance impact.
 
 Safari mitigations incoming for [BTI] and [MISPREDICT]. <2.5% perf impact.
+
+### Red Hat
+
+[Advisory](https://access.redhat.com/security/vulnerabilities/speculativeexecution) and mitigations for CVE-2017-5754, CVE-2017-5753 and CVE-2017-5715 released. Expected [performance impact analysis](https://access.redhat.com/articles/3307751) on different scenarios released, based on Red Hat's own testing. 
+
+### Ubuntu
+
+Preliminary [Advisory](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/SpectreAndMeltdown) published with no mitigations/patches released so far for Ubuntu Linux.
+
+### VMware
+
+[Advisory](https://www.vmware.com/us/security/advisories/VMSA-2018-0002.html) and patches for ESXi 5.5, 6.0 and 6.5 released.
+Patch for ESXi 5.5 lacks mitigation for CVE-2017-5753.
+
+### Cisco
+
+[Advisory](https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180104-cpusidechannel) released, but no mitigations or vulnerable product confirmation so far.
 
 ## Future Speculation
 
@@ -572,3 +593,7 @@ use them.
 * [Google’s Mitigations Against CPU Speculative Execution Attack Methods](https://support.google.com/faqs/answer/7622138)
 * [About speculative execution vulnerabilities in ARM-based and Intel CPUs](https://support.apple.com/en-us/HT208394)
 * [Retpoline: a software construct for preventing branch-target-injection](https://support.google.com/faqs/answer/7625886)
+* [VMSA-2018-0002VMware ESXi, Workstation and Fusion updates address side-channel analysis due to speculative execution](https://www.vmware.com/us/security/advisories/VMSA-2018-0002.html)
+* [Redhat: Kernel Side-Channel Attacks - CVE-2017-5754 CVE-2017-5753 CVE-2017-5715](https://access.redhat.com/security/vulnerabilities/speculativeexecution)
+* [Ubuntu: Information Leak via speculative execution side channel attacks (CVE-2017-5715, CVE-2017-5753, CVE-2017-5754 aka Spectre and Meltdown)](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/SpectreAndMeltdown)
+* [Cisco: CPU Side-Channel Information Disclosure Vulnerabilities](https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180104-cpusidechannel)
