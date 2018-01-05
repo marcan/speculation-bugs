@@ -603,12 +603,12 @@ userspace attacks, but cannot attack Xen.
 ## Future Speculation
 
 [BTI], [PRIV-READ], and [PRIV-REG] are CPU implementation bugs that are easily
-fixable in newer silicon (with some OS support for [BTI]). [MISPREDICT] is,
-however, inherent in how modern speculation works, and may change how we have to
-think about writing secure code in the future, much like how we think about
-memory races and atomicity in multithreaded code today. In the future, I expect
-we'll end up seeing speculation guard compiler intrinsics and teaching people to
-use them.
+fixable in newer silicon (with some OS support for [BTI]). [MISPREDICT] can
+be addressed in silicon by marking any speculated instructions as such to
+ensure they don't trigger undesirable side effects in other parts of the system.
+For example, for the specific case of cache timing attacks, caches can reserve a
+small set of lines per thread to handle caching of speculative instructions and
+only move them to the usual cache once the memory instruction is commited.
 
 ## References
 
