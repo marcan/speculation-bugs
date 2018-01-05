@@ -416,7 +416,7 @@ TODO: further info on microcode updates released.
 * [AMD Update on Processor Security](https://www.amd.com/en/corporate/speculative-execution)
 
 Claims "near zero" risk for [BTI] but offers no proof. This suggests reliance
-on obscurity (AMD's branch predictor has not been yet reverse engineered).
+on obscurity (AMD's branch predictor has not yet been reverse engineered).
 Assume vulnerable unless proven otherwise.
 
 AMD CPUs are affected by [MISPREDICT] and not affected by [PRIV-LOAD].
