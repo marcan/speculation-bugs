@@ -296,7 +296,7 @@ This is an interpreter/JIT attack in the kernel. On Haswell, it works in both
 JIT and interpreter mode, as the speculation seems to be deep enough to reach
 even in interpreter mode. On AMD, JIT is required.
 
-Mitigation: AMD: disable eBPF JIT (`net.core.bpf_jit_enable` sysctl). Intel
+Mitigation: AMD: disable eBPF JIT (`net.core.bpf_jit_enable` sysctl). Intel:
 disable BPF entirely?
 
 ### [BTI] Google Project Zero: HV guest root process can read host physical memory
@@ -382,7 +382,7 @@ information.
 
 * [Speculative Execution and Indirect Branch Prediction Side Channel Analysis Method](https://security-center.intel.com/advisory.aspx?intelid=INTEL-SA-00088&languageid=en-fr)
 
-Security advisory. Applies to [BTI]. Contains list of marketing CPU names
+Security advisory. Applies to [BTI]. Contains list of CPU marketing names
 affected.
 
 * [Intel Issues Updates to Protect Systems from Security Exploits](https://newsroom.intel.com/news-releases/intel-issues-updates-protect-systems-security-exploits/)
