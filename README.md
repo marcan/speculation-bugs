@@ -12,6 +12,27 @@ This is a combination of publicly available information and educated guesses/
 speculation based on the nature of the attacks. Pull requests with corrections
 or discussion are welcome.
 
+Table of Contents
+=================
+
+   * [Common attack characteristics](#common-attack-characteristics)
+   * [Attacks](#attacks)
+      * [[MISPREDICT] Branch mis-prediction leaks subsequent data](#mispredict-branch-mis-prediction-leaks-subsequent-data)
+      * [[BTI] Branch Target Injection](#bti-branch-target-injection)
+      * [[PRIV-LOAD] Privileged data reads from unprivileged code](#priv-load-privileged-data-reads-from-unprivileged-code))
+      * [[PRIV-REG] Privileged register reads from unprivileged code](#priv-reg-privileged-register-reads-from-unprivileged-code)
+   * [Impacted CPU matrix](#impacted-cpu-matrix)
+   * [PoCs](#pocs)
+   * [Deployed or in-development mitigations](#deployed-or-in-development-mitigations)
+      * [[PRIV-LOAD] Linux: KPTI](#priv-load-linux-kpti)
+      * [[BTI] Linux: retpolines](#bti-linux-retpolines)
+      * [[BTI] Linux: IBRS patch series](#bti-linux-ibrs-patch-series)
+      * [[PRIV-LOAD] Windows: KB4056892 (OS Build 16299.192)](#priv-load-windows-kb4056892-os-build-16299192)
+   * [CPU Vendor response](#cpu-vendor-response)
+   * [Software/Service Vendor response](#softwareservice-vendor-response)
+   * [Future Speculation](#future-speculation)
+   * [References](#references)
+
 ## Common attack characteristics
 
 All of the attacks cause information disclosure from higher-privileged or
@@ -553,6 +574,8 @@ use them.
 * [Google Project Zero blog post](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html)
 * [Meltdown paper](https://meltdownattack.com/meltdown.pdf)
 * [Spectre paper](https://spectreattack.com/spectre.pdf)
+* [LWN summary of the vulnerabilities](https://lwn.net/SubscriberLink/742702/e23889188fce9f7f/)
+* [LWN collection of Meltdown/Spectre posting](https://lwn.net/Articles/742999/)
 * [ARM Processor Security Update](https://developer.arm.com/support/security-update)
 * [ARM Cache-speculation Side-channels whitepaper](https://developer.arm.com/-/media/Files/pdf/Cache_Speculation_Side-channels.pdf?revision=966364ce-10aa-4580-8431-7e4ed42fb90b&la=en)
 * [AMD Update on Processor Security](https://www.amd.com/en/corporate/speculative-execution)
@@ -562,6 +585,7 @@ use them.
 * [Intel Analysis of Speculative Execution Side Channels](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/01/Intel-Analysis-of-Speculative-Execution-Side-Channels.pdf)
 * [Windows 10 KB4056892](https://support.microsoft.com/en-us/help/4056892/windows-10-update-kb4056892)
 * [Chrome: Actions Required to Mitigate Speculative Side-Channel Attack Techniques](https://www.chromium.org/Home/chromium-security/ssca)
+* [Chrome: Mitigation with Site Isolation](http://www.chromium.org/Home/chromium-security/site-isolation)
 * [Mozilla: Mitigations landing for new class of timing attack](https://blog.mozilla.org/security/2018/01/03/mitigations-landing-new-class-timing-attack/)
 * [MS Edge/IE: Mitigating speculative execution side-channel attacks in Microsoft Edge and Internet Explorer](https://blogs.windows.com/msedgedev/2018/01/03/speculative-execution-mitigations-microsoft-edge-internet-explorer/)
 * [Google’s Mitigations Against CPU Speculative Execution Attack Methods](https://support.google.com/faqs/answer/7622138)
