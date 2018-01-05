@@ -332,7 +332,9 @@ further issues.
 
 ### [BTI] Linux: retpolines
 
-Still in development. [Detailed explanation](https://support.google.com/faqs/answer/7625886) from Google.
+* [Retpoline: a software construct for preventing branch-target-injection](https://support.google.com/faqs/answer/7625886)
+
+Still in development.
 
 Kernel assembly mitigation + compiler mitigation (both for kernel and userspace)
 that uses a different code sequence (using the `ret` instruction) to avoid
@@ -544,3 +546,5 @@ use them.
 * [Mozilla: Mitigations landing for new class of timing attack](https://blog.mozilla.org/security/2018/01/03/mitigations-landing-new-class-timing-attack/)
 * [MS Edge/IE: Mitigating speculative execution side-channel attacks in Microsoft Edge and Internet Explorer](https://blogs.windows.com/msedgedev/2018/01/03/speculative-execution-mitigations-microsoft-edge-internet-explorer/)
 * [Google’s Mitigations Against CPU Speculative Execution Attack Methods](https://support.google.com/faqs/answer/7622138)
+* [About speculative execution vulnerabilities in ARM-based and Intel CPUs](https://support.apple.com/en-us/HT208394)
+* [Retpoline: a software construct for preventing branch-target-injection](https://support.google.com/faqs/answer/7625886)
