@@ -547,6 +547,24 @@ Cloud Dataflow/Cloud Datalab/Cloud Dataproc/Cloud Launcher/Cloud Machine
 Learning Engine/Compute Engine/Kubernetes Engine need to be updated/restarted
 with fixes.
 
+### Amazon AWS
+
+* [Processor Speculative Execution Research Disclosure](https://aws.amazon.com/security/security-bulletins/AWS-2018-013/)
+
+Amazon scheduled maintenance reboots to update their infrastructure. Customers
+must patch guest OSes/kernels.
+
+### Microsoft Azure
+
+* [Securing Azure customers from CPU vulnerability](https://azure.microsoft.com/en-us/blog/securing-azure-customers-from-cpu-vulnerability/)
+
+MS scheduled maintenance reboots to update their infrastructure. They claim the
+vulnerability is mitigated at the hypervisor level and does not need guest
+updates, but that is almost certainly BS, since these vulnerabilities affect
+both inter-guest security (mitigated at HV) and intra-guest security (mitigated
+at guest). Users should still update their guest OSes to ensure they are
+protected.
+
 ### Apple
 
 * [About speculative execution vulnerabilities in ARM-based and Intel CPUs](https://support.apple.com/en-us/HT208394)
@@ -603,6 +621,8 @@ use them.
 * [Mozilla: Mitigations landing for new class of timing attack](https://blog.mozilla.org/security/2018/01/03/mitigations-landing-new-class-timing-attack/)
 * [MS Edge/IE: Mitigating speculative execution side-channel attacks in Microsoft Edge and Internet Explorer](https://blogs.windows.com/msedgedev/2018/01/03/speculative-execution-mitigations-microsoft-edge-internet-explorer/)
 * [Google’s Mitigations Against CPU Speculative Execution Attack Methods](https://support.google.com/faqs/answer/7622138)
+* [AWS: Processor Speculative Execution Research Disclosure](https://aws.amazon.com/security/security-bulletins/AWS-2018-013/)
+* [Securing Azure customers from CPU vulnerability](https://azure.microsoft.com/en-us/blog/securing-azure-customers-from-cpu-vulnerability/)
 * [About speculative execution vulnerabilities in ARM-based and Intel CPUs](https://support.apple.com/en-us/HT208394)
 * [Retpoline: a software construct for preventing branch-target-injection](https://support.google.com/faqs/answer/7625886)
 * [VMSA-2018-0002VMware ESXi, Workstation and Fusion updates address side-channel analysis due to speculative execution](https://www.vmware.com/us/security/advisories/VMSA-2018-0002.html)
