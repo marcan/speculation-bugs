@@ -243,7 +243,8 @@ See [ARM Vendor Response](#arm-1) for source.
 
 ### IBM
 
-No information.
+Red Hat [says](https://access.redhat.com/security/vulnerabilities/speculativeexecution)
+System Z, POWER8, POWER9 are affected. No further info.
 
 ## PoCs
 
