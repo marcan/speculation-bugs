@@ -183,12 +183,39 @@ is being read.
 
 ### Intel
 
-| CPU/µArch                      | MISPREDICT | BTI   | PRIV-LOAD | PRIV-REG |
-| ------------------------------ | ---------- | ----- | --------- | -------- |
-| i486                           | N          | N     | N         | N        |
-| Sandy Bridge                   | Y          | Y     | **Y**     |          |
-| Haswell                        | Y          | Y     | **Y**     |          |
-| Skylake                        | Y          | Y     | **Y**     |          |
+| CPU/µArch                      | MISPREDICT     | BTI                       | PRIV-LOAD         | PRIV-REG |
+| ------------------------------ | -------------- | ------------------------- | ----------------- | -------- |
+| i486                           | N              | N                         | N                 | N        |
+| Nehalem                        | Y?<sup>4</sup> | Y<sup>[1](#intel-1)</sup> | Y?<sup>4</sup>    |          |
+| Westmere                       | Y?<sup>4</sup> | Y<sup>[1](#intel-1)</sup> | Y?<sup>4</sup>    |          |
+| Sandy Bridge                   | Y<sup>3</sup>  | Y<sup>[1](#intel-1)</sup> | **Y**<sup>2</sup> |          |
+| Ivy Bridge                     | Y<sup>3</sup>  | Y<sup>[1](#intel-1)</sup> | **Y**<sup>2</sup> |          |
+| Haswell                        | Y<sup>3</sup>  | Y<sup>[1](#intel-1)</sup> | **Y**<sup>2</sup> |          |
+| Broadwell                      | Y<sup>3</sup>  | Y<sup>[1](#intel-1)</sup> | **Y**<sup>2</sup> |          |
+| Skylake                        | Y<sup>3</sup>  | Y<sup>[1](#intel-1)</sup> | **Y**<sup>2</sup> |          |
+| Kaby Lake                      | Y<sup>3</sup>  | Y<sup>[1](#intel-1)</sup> | **Y**<sup>2</sup> |          |
+| Coffee Lake                    | Y<sup>3</sup>  | Y<sup>[1](#intel-1)</sup> | **Y**<sup>2</sup> |          |
+| Knights Landing                | Y?<sup>4</sup> | Y<sup>[1](#intel-1)</sup> | Y?<sup>4</sup>    |          |
+| Knights Mill                   | Y?<sup>4</sup> | Y<sup>[1](#intel-1)</sup> | Y?<sup>4</sup>    |          |
+| Avoton                         | Y?<sup>4</sup> | Y<sup>[1](#intel-1)</sup> | Y?<sup>4</sup>    |          |
+| Rangeley                       | Y?<sup>4</sup> | Y<sup>[1](#intel-1)</sup> | Y?<sup>4</sup>    |          |
+| Apollo Lake                    | Y?<sup>4</sup> | Y<sup>[1](#intel-1)</sup> | Y?<sup>4</sup>    |          |
+| Denverton                      | Y?<sup>4</sup> | Y<sup>[1](#intel-1)</sup> | Y?<sup>4</sup>    |          |
+| SoFIA                          | Y?<sup>4</sup> | Y<sup>[1](#intel-1)</sup> | Y?<sup>4</sup>    |          |
+| Lincroft                       | Y?<sup>4</sup> | Y<sup>[1](#intel-1)</sup> | Y?<sup>4</sup>    |          |
+| Cloverview                     | Y?<sup>4</sup> | Y<sup>[1](#intel-1)</sup> | Y?<sup>4</sup>    |          |
+| Bay Trail                      | Y?<sup>4</sup> | Y<sup>[1](#intel-1)</sup> | Y?<sup>4</sup>    |          |
+| Tunnel Creek                   | Y?<sup>4</sup> | Y<sup>[1](#intel-1)</sup> | Y?<sup>4</sup>    |          |
+| Stellarton                     | Y?<sup>4</sup> | Y<sup>[1](#intel-1)</sup> | Y?<sup>4</sup>    |          |
+
+2: [Meltdown paper](https://meltdownattack.com/meltdown.pdf) confirms
+[PRIV-LOAD] on Ivy Bridge, Haswell, Skylake. Sibling microarchitectures presumed
+vulnerable too.\
+3: [Spectre paper](https://meltdownattack.com/spectre.pdf) confirms
+[MISPREDICT],[BTI] on Ivy Bridge, Haswell, Skylake. Sibling microarchitectures
+presumed vulnerable too.\
+4: Presumed affected since the issues appear to be pervasive to Intel CPUs and
+no counterexamples are known yet.
 
 ### AMD
 
@@ -197,6 +224,8 @@ is being read.
 | Ryzen                          | Y          | Y?<sup>[1](#amd-1)</sup> | N         |          |
 
 ### ARM
+
+See [ARM Vendor Response](#arm-1) for source.
 
 | CPU/µArch                      | MISPREDICT | BTI   | PRIV-LOAD | PRIV-REG |
 | ------------------------------ | ---------- | ----- | --------- | -------- |
@@ -325,6 +354,11 @@ May also [contain IBRS support](https://twitter.com/aionescu/status/948818841747
 
 PR fluff. No real content. Tries to deflect blame. No useful technical
 information.
+
+* [Speculative Execution and Indirect Branch Prediction Side Channel Analysis Method](https://security-center.intel.com/advisory.aspx?intelid=INTEL-SA-00088&languageid=en-fr)
+
+Security advisory. Applies to [BTI]. Contains list of marketing CPU names
+affected.
 
 * [Intel Issues Updates to Protect Systems from Security Exploits](https://newsroom.intel.com/news-releases/intel-issues-updates-protect-systems-security-exploits/)
 * [Intel Analysis of Speculative Execution Side Channels](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/01/Intel-Analysis-of-Speculative-Execution-Side-Channels.pdf)
