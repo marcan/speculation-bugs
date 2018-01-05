@@ -544,9 +544,9 @@ watchOS is not impacted. Claims no performance impact.
 
 Safari mitigations incoming for [BTI] and [MISPREDICT]. <2.5% perf impact.
 
-### RedHat
+### Red Hat
 
-[Advisory](https://access.redhat.com/security/vulnerabilities/speculativeexecution) and mitigations for CVE-2017-5754, CVE-2017-5753 and CVE-2017-5715 released. Expected [performance impact analysis](https://access.redhat.com/articles/3307751) on different scenarios released, based on RedHat's own testing. 
+[Advisory](https://access.redhat.com/security/vulnerabilities/speculativeexecution) and mitigations for CVE-2017-5754, CVE-2017-5753 and CVE-2017-5715 released. Expected [performance impact analysis](https://access.redhat.com/articles/3307751) on different scenarios released, based on Red Hat's own testing. 
 
 ### Ubuntu
 
