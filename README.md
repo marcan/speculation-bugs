@@ -266,6 +266,10 @@ No info.
 
 No info.
 
+### Samsung
+
+No info.
+
 ## PoCs
 
 ### [MISPREDICT] Google Project Zero: basic same-process PoC
