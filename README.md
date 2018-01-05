@@ -423,7 +423,7 @@ AMD CPUs are affected by [MISPREDICT] and not affected by [PRIV-LOAD].
 
 TODO: [Gentoo bug 643476](https://bugs.gentoo.org/643476) claims microcode
 update to disable branch prediction (entirely?) on family 17h (Zen) is
-available ([SuSe notice](https://lists.opensuse.org/opensuse-security-announce/2018-01/msg00005.html)).
+available ([SUSE notice](https://lists.opensuse.org/opensuse-security-announce/2018-01/msg00005.html)).
 Performance impact unknown.
 
 ### ARM
