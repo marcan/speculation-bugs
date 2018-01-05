@@ -521,6 +521,23 @@ watchOS is not impacted. Claims no performance impact.
 
 Safari mitigations incoming for [BTI] and [MISPREDICT]. <2.5% perf impact.
 
+### RedHat
+
+[Advisory](https://access.redhat.com/security/vulnerabilities/speculativeexecution) and mitigations for CVE-2017-5754, CVE-2017-5753 and CVE-2017-5715 released. Expected [performance impact analysis](https://access.redhat.com/articles/3307751) on different scenarios released, based on RedHat's own testing. 
+
+### Ubuntu
+
+Preliminary [Advisory](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/SpectreAndMeltdown) published with no mitigations/patches released so far for Ubuntu Linux.
+
+### VMware
+
+[Advisory](https://www.vmware.com/us/security/advisories/VMSA-2018-0002.html) and patches for ESXi 5.5, 6.0 and 6.5 released.
+Patch for ESXi 5.5 lacks mitigation for CVE-2017-5753.
+
+### Cisco
+
+[Advisory](https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180104-cpusidechannel) released, but no mitigations or vulnerable product confirmation so far.
+
 ## Future Speculation
 
 [BTI], [PRIV-READ], and [PRIV-REG] are CPU implementation bugs that are easily
@@ -550,3 +567,7 @@ use them.
 * [Google’s Mitigations Against CPU Speculative Execution Attack Methods](https://support.google.com/faqs/answer/7622138)
 * [About speculative execution vulnerabilities in ARM-based and Intel CPUs](https://support.apple.com/en-us/HT208394)
 * [Retpoline: a software construct for preventing branch-target-injection](https://support.google.com/faqs/answer/7625886)
+* [VMSA-2018-0002VMware ESXi, Workstation and Fusion updates address side-channel analysis due to speculative execution](https://www.vmware.com/us/security/advisories/VMSA-2018-0002.html)
+* [Redhat: Kernel Side-Channel Attacks - CVE-2017-5754 CVE-2017-5753 CVE-2017-5715](https://access.redhat.com/security/vulnerabilities/speculativeexecution)
+* [Ubuntu: Information Leak via speculative execution side channel attacks (CVE-2017-5715, CVE-2017-5753, CVE-2017-5754 aka Spectre and Meltdown)](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/SpectreAndMeltdown)
+* [Cisco: CPU Side-Channel Information Disclosure Vulnerabilities](https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180104-cpusidechannel)
