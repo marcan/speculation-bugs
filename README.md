@@ -401,7 +401,7 @@ Data="0x00000000”
 
 A PowerShell command has been [detailed](https://support.microsoft.com/en-us/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) (installable via `Install-Module SpeculationControl`) called `Get-SpeculationControlSettings` which shows the status of both mitigations.
 
-Microsoft mentions at this time server operating systems must explicitly enable BTI mitigations.
+Microsoft mentions at this time server operating systems must explicitly enable mitigations.
 
 ## CPU Vendor response
 
