@@ -246,6 +246,26 @@ See [ARM Vendor Response](#arm-1) for source.
 Red Hat [says](https://access.redhat.com/security/vulnerabilities/speculativeexecution)
 System Z, POWER8, POWER9 are affected. No further info.
 
+### Apple
+
+No info.
+
+### Nvidia
+
+No info (CPUs). GPUs not affected.
+
+### Qualcomm
+
+No info.
+
+### Marvell
+
+No info.
+
+### Cavium
+
+No info.
+
 ## PoCs
 
 ### [MISPREDICT] Google Project Zero: basic same-process PoC
