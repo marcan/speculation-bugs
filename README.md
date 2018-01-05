@@ -377,14 +377,22 @@ CPUs. Kernel implementation will likely enable it only when a vulnerable CPU is
 detected. In fact, it's insufficient on Skylake and newer CPUs, where even `ret`
 may predict from the indirect branch predictor as a fallback; those need IBRS.
 
-### [BTI] Linux: IBRS patch series
+### [BTI] Linux/QEMU: IBRS patches
 
-[Patchset](https://lkml.org/lkml/2018/1/4/615) (under review).
+* [Patchset](https://lkml.org/lkml/2018/1/4/615) (under review).
 
 Support for Intel's architectural mitigation in lieu of retpolines. Required
 on Skylake and newer, where even retpolines may be vulnerable. Requires
 microcode update on current CPUs. Perf hit vs. retpolines on older CPUs. Future
-CPUs will have "cheap" support.
+CPUs will have "cheap" support. This doesn't require userspace mitigation, as
+long as "full" mode is enabled (IBRS active in userspace too, non-default
+config).
+
+Support to pass through this feature to guest OSes is required for this to work
+inside VMs:
+
+* [QEMU and the Spectre and Meltdown attacks](https://www.qemu.org/2018/01/04/spectre/)
+* [QEMU mailing list discussion](https://lists.nongnu.org/archive/html/qemu-devel/2018-01/msg00811.html)
 
 ### [PRIV-LOAD + BTI] Windows: KB4056892 (OS Build 16299.192)
 
@@ -601,3 +609,4 @@ use them.
 * [Redhat: Kernel Side-Channel Attacks - CVE-2017-5754 CVE-2017-5753 CVE-2017-5715](https://access.redhat.com/security/vulnerabilities/speculativeexecution)
 * [Ubuntu: Information Leak via speculative execution side channel attacks (CVE-2017-5715, CVE-2017-5753, CVE-2017-5754 aka Spectre and Meltdown)](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/SpectreAndMeltdown)
 * [Cisco: CPU Side-Channel Information Disclosure Vulnerabilities](https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180104-cpusidechannel)
+* [QEMU and the Spectre and Meltdown attacks](https://www.qemu.org/2018/01/04/spectre/)
