@@ -407,7 +407,7 @@ state between two hyperthreads.
 indirect branch predictor state across contexts (for use on context/privilege
 switches).
 
-Alternatively, Intel is recommending retpolines for [BPI], especially on current
+Alternatively, Intel is recommending retpolines for [BTI], especially on current
 processors where that may be faster than the microcode patches for `IBPB`.
 Retpolines also require a microcode patch on Broadwell and newer CPUs,
 presumably because on those even `ret` ends up being predicted in an exploitable
