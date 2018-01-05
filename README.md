@@ -221,7 +221,7 @@ no counterexamples are known yet.
 
 | CPU/µArch                      | MISPREDICT | BTI                      | PRIV-LOAD | PRIV-REG |
 | ------------------------------ | ---------- | ------------------------ | --------- | -------- |
-| Ryzen                          | Y          | Y?<sup>[1](#amd-1)</sup> | N         |          |
+| Zen (17h)                      | Y          | Y?<sup>[1](#amd-1)</sup> | N         |          |
 
 ### ARM
 
@@ -397,7 +397,8 @@ Assume vulnerable unless proven otherwise.
 AMD CPUs are affected by [MISPREDICT] and not affected by [PRIV-LOAD].
 
 TODO: [Gentoo bug 643476](https://bugs.gentoo.org/643476) claims microcode
-update to disable branch prediction (entirely?) on family 17h is available.
+update to disable branch prediction (entirely?) on family 17h (Zen) is
+available ([SuSe notice](https://lists.opensuse.org/opensuse-security-announce/2018-01/msg00005.html)).
 Performance impact unknown.
 
 ### ARM
