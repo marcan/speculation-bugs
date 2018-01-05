@@ -353,9 +353,11 @@ Linux kernel page-table isolation. Shipped in Linux 4.14.11 and will ship in
 4.15. 4.14.11 version is rough around the edges; future versions should fix
 further issues.
 
-### [BTI] Linux: retpolines
+### [BTI] Linux/GCC/LLVM: retpolines
 
 * [Retpoline: a software construct for preventing branch-target-injection](https://support.google.com/faqs/answer/7625886)
+* [LLVM patch](https://reviews.llvm.org/D41723)
+* [GCC tree](http://git.infradead.org/users/dwmw2/gcc-retpoline.git/shortlog/refs/heads/gcc-7_2_0-retpoline-20171219)
 
 Still in development.
 
