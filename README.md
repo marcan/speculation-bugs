@@ -148,7 +148,7 @@ this sequence.
 Flush branch predictor state on privilege level changes and context switches.
 Causes some performance loss (how much?). Current CPUs do not implement a
 mechanism to do this this. Hyperthreading makes things more complicated, as two
-threads of diferent privilege level or isolation may be running on the same CPU
+threads of different privilege level or isolation may be running on the same CPU
 and sharing the branch prediction resources. Complete fix may require disabling
 hyperthreading or introducing OS scheduler changes to ensure that sibling
 threads are always owned by the same application/user/security context.
