@@ -332,15 +332,20 @@ further issues.
 
 ### [BTI] Linux: retpolines
 
-Still in development.
+Still in development. [Detailed explanation](https://support.google.com/faqs/answer/7625886) from Google.
 
 Kernel assembly mitigation + compiler mitigation (both for kernel and userspace)
-that uses a different code sequence (using the `ret` instruction) that avoids
-the indirect branch predictor on Intel CPUs. Incurs some small performance
-impact for every indirect branch. Requires recompiling all affected software
-(not just the kernel, but all of userspace) for full mitigation.
+that uses a different code sequence (using the `ret` instruction) to avoid
+the indirect branch predictor on Intel CPUs. Instead, retpolines set up a fake
+return address prediction (using the return address stack, which is specific to
+`call`/`ret`) that leads to an infinite loop, thus poisoning speculative
+execution.
 
-This is microarchitecture-specific and thus not necessarily applicable to other
+This incurs some small performance impact for every indirect branch. Requires
+recompiling all affected software (not just the kernel, but all of userspace)
+for full mitigation.
+
+This is microarchitecture-specific and thus not necessarily applicable to all
 CPUs. Kernel implementation will likely enable it only when a vulnerable CPU is
 detected. In fact, it's insufficient on Skylake and newer CPUs, where even `ret`
 may predict from the indirect branch predictor as a fallback; those need IBRS.
