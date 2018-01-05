@@ -488,6 +488,8 @@ harder (but is not a perfect fix).
 Removing `SharedArrayBuffer` and reducing resolution of `performance.now()` to
 20µs. This makes the attacks harder (but is not a perfect fix).
 
+Starting with Firefox 57.0.4, [both techniques are enabled](https://www.mozilla.org/en-US/security/advisories/mfsa2018-01/).
+
 ### Microsoft Edge / IE
 
 * [Mitigating speculative execution side-channel attacks in Microsoft Edge and Internet Explorer](https://blogs.windows.com/msedgedev/2018/01/03/speculative-execution-mitigations-microsoft-edge-internet-explorer/)
