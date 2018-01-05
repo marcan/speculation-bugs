@@ -244,7 +244,9 @@ See [ARM Vendor Response](#arm-1) for source.
 ### IBM
 
 Red Hat [says](https://access.redhat.com/security/vulnerabilities/speculativeexecution)
-System Z, POWER8, POWER9 are affected. No further info.
+System Z, POWER8, POWER9 are affected.
+
+IBM says firmware patches will be available January 9 for POWER7 and up:  https://www.ibm.com/blogs/psirt/potential-impact-processors-power-family/
 
 ### Apple
 
