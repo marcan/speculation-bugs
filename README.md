@@ -384,9 +384,9 @@ on Skylake and newer, where even retpolines may be vulnerable. Requires
 microcode update on current CPUs. Perf hit vs. retpolines on older CPUs. Future
 CPUs will have "cheap" support.
 
-### [PRIV-LOAD] Windows: KB4056892 (OS Build 16299.192)
+### [PRIV-LOAD + BTI] Windows: KB4056892 (OS Build 16299.192)
 
-Out-of-band update. Presumably does roughly the same thing as KPTI.
+Out-of-band update. Presumably does roughly the same thing as KPTI. Also [contains IBRS support](https://twitter.com/aionescu/status/948818841747955713).
 
 Some AV software is incompatible (probably due to evil kernel hooks). AV users
 require this registry key to be set for the fix to be enabled:
@@ -399,7 +399,9 @@ Type="REG_DWORD”
 Data="0x00000000”
 ```
 
-May also [contain IBRS support](https://twitter.com/aionescu/status/948818841747955713)?
+A PowerShell command has been [detailed](https://support.microsoft.com/en-us/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) (installable via `Install-Module SpeculationControl`) called `Get-SpeculationControlSettings` which shows the status of both mitigations.
+
+Microsoft mentions at this time server operating systems must explicitly enable BTI mitigations.
 
 ## CPU Vendor response
 
