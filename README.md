@@ -275,7 +275,7 @@ No info.
 
 ### Nvidia
 
-No info (CPUs). GPUs not affected.
+Nvidia GPU patches will be [avaiable in Jan 8 for Geforce/Quadro/NVS](http://nvidia.custhelp.com/app/answers/detail/a_id/4611/~/security-bulletin%3A-nvidia-gpu-display-driver-security-updates-for-speculative). Notes that Nvidia GPU isn't affected by Variant 3 (CVE-2017-5754). 
 
 ### Qualcomm
 
