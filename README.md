@@ -577,6 +577,12 @@ Safari mitigations incoming for [BTI] and [MISPREDICT]. <2.5% perf impact.
 ### Red Hat
 
 [Advisory](https://access.redhat.com/security/vulnerabilities/speculativeexecution) and mitigations for CVE-2017-5754, CVE-2017-5753 and CVE-2017-5715 released. Expected [performance impact analysis](https://access.redhat.com/articles/3307751) on different scenarios released, based on Red Hat's own testing. 
+[Advisory](https://access.redhat.com/articles/3311301) about controlling the performance impact of the mitigations. Can be disabled on boot with "noibrs noibpb nopti" kernel options, or at runtime (see below).
+```
+echo 0 > /sys/kernel/debug/x86/pti_enabled
+echo 0 > /sys/kernel/debug/x86/ibpb_enabled
+echo 0 > /sys/kernel/debug/x86/ibrs_enabled
+```
 
 ### Ubuntu
 
@@ -586,6 +592,7 @@ Preliminary [Advisory](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/Spectr
 
 [Advisory](https://www.vmware.com/us/security/advisories/VMSA-2018-0002.html) and patches for ESXi 5.5, 6.0 and 6.5 released.
 Patch for ESXi 5.5 lacks mitigation for CVE-2017-5753.
+[Advisory](https://kb.vmware.com/s/article/52264) about affected VMware's virtual appliances and impact status.
 
 ### Xen
 
@@ -598,7 +605,7 @@ userspace attacks, but cannot attack Xen.
 
 ### Cisco
 
-[Advisory](https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180104-cpusidechannel) released, but no mitigations or vulnerable product confirmation so far.
+[Advisory](https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180104-cpusidechannel) available with list of products currently under investigation, affected products and potential fix availability (current expected date 18-Feb-2018). Relevant for Cisco UCS server product range, that require microcode update to resolve the issue.
 
 ## Future Speculation
 
