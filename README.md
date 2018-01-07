@@ -576,8 +576,8 @@ Safari mitigations incoming for [BTI] and [MISPREDICT]. <2.5% perf impact.
 
 ### Red Hat
 
-[Advisory](https://access.redhat.com/security/vulnerabilities/speculativeexecution) and mitigations for CVE-2017-5754, CVE-2017-5753 and CVE-2017-5715 released. Expected [performance impact analysis](https://access.redhat.com/articles/3307751) on different scenarios released, based on Red Hat's own testing. 
-[Advisory](https://access.redhat.com/articles/3311301) about controlling the performance impact of the mitigations. Can be disabled on boot with "noibrs noibpb nopti" kernel options, or at runtime (see below).
+* [Advisory](https://access.redhat.com/security/vulnerabilities/speculativeexecution) and mitigations for CVE-2017-5754, CVE-2017-5753 and CVE-2017-5715 released. Expected [performance impact analysis](https://access.redhat.com/articles/3307751) on different scenarios released, based on Red Hat's own testing. 
+* [Advisory](https://access.redhat.com/articles/3311301) about controlling the performance impact of the mitigations. Can be disabled on boot with "noibrs noibpb nopti" kernel options, or at runtime (see below).
 ```
 echo 0 > /sys/kernel/debug/x86/pti_enabled
 echo 0 > /sys/kernel/debug/x86/ibpb_enabled
@@ -590,9 +590,8 @@ Preliminary [Advisory](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/Spectr
 
 ### VMware
 
-[Advisory](https://www.vmware.com/us/security/advisories/VMSA-2018-0002.html) and patches for ESXi 5.5, 6.0 and 6.5 released.
-Patch for ESXi 5.5 lacks mitigation for CVE-2017-5753.
-[Advisory](https://kb.vmware.com/s/article/52264) about affected VMware's virtual appliances and impact status.
+*[Advisory](https://www.vmware.com/us/security/advisories/VMSA-2018-0002.html) and patches for ESXi 5.5, 6.0 and 6.5 released. Patch for ESXi 5.5 lacks mitigation for CVE-2017-5753.
+*[Advisory](https://kb.vmware.com/s/article/52264) about affected VMware's virtual appliances and impact status.
 
 ### Xen
 
@@ -605,7 +604,7 @@ userspace attacks, but cannot attack Xen.
 
 ### Cisco
 
-[Advisory](https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180104-cpusidechannel) available with list of products currently under investigation, affected products and potential fix availability (current expected date 18-Feb-2018). Relevant for Cisco UCS server product range, that require microcode update to resolve the issue.
+* [Advisory](https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180104-cpusidechannel) available with list of products currently under investigation, affected products and potential fix availability (current expected date 18-Feb-2018). Relevant for Cisco UCS server product range, that require microcode update to resolve the issue.
 
 ## Future Speculation
 
@@ -642,6 +641,7 @@ use them.
 * [About speculative execution vulnerabilities in ARM-based and Intel CPUs](https://support.apple.com/en-us/HT208394)
 * [Retpoline: a software construct for preventing branch-target-injection](https://support.google.com/faqs/answer/7625886)
 * [VMSA-2018-0002VMware ESXi, Workstation and Fusion updates address side-channel analysis due to speculative execution](https://www.vmware.com/us/security/advisories/VMSA-2018-0002.html)
+* [VMware Virtual Appliances and CVE-2017-5753, CVE-2017-5715 (Spectre), CVE-2017-5754 (Meltdown) (52264)](https://kb.vmware.com/s/article/52264)
 * [Redhat: Kernel Side-Channel Attacks - CVE-2017-5754 CVE-2017-5753 CVE-2017-5715](https://access.redhat.com/security/vulnerabilities/speculativeexecution)
 * [Ubuntu: Information Leak via speculative execution side channel attacks (CVE-2017-5715, CVE-2017-5753, CVE-2017-5754 aka Spectre and Meltdown)](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/SpectreAndMeltdown)
 * [Cisco: CPU Side-Channel Information Disclosure Vulnerabilities](https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180104-cpusidechannel)
