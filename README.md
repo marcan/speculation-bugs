@@ -12,6 +12,27 @@ This is a combination of publicly available information and educated guesses/
 speculation based on the nature of the attacks. Pull requests with corrections
 or discussion are welcome.
 
+Table of Contents
+=================
+
+   * [Common attack characteristics](#common-attack-characteristics)
+   * [Attacks](#attacks)
+      * [[MISPREDICT] Branch mis-prediction leaks subsequent data](#mispredict-branch-mis-prediction-leaks-subsequent-data)
+      * [[BTI] Branch Target Injection](#bti-branch-target-injection)
+      * [[PRIV-LOAD] Privileged data reads from unprivileged code](#priv-load-privileged-data-reads-from-unprivileged-code))
+      * [[PRIV-REG] Privileged register reads from unprivileged code](#priv-reg-privileged-register-reads-from-unprivileged-code)
+   * [Impacted CPU matrix](#impacted-cpu-matrix)
+   * [PoCs](#pocs)
+   * [Deployed or in-development mitigations](#deployed-or-in-development-mitigations)
+      * [[PRIV-LOAD] Linux: KPTI](#priv-load-linux-kpti)
+      * [[BTI] Linux/GCC/LLVM: retpolines](#bti-linuxgccllvm-retpolines)
+      * [[BTI] Linux/QEMU: IBRS patches](#bti-linuxqemu-ibrs-patches)
+      * [[PRIV-LOAD] Windows: KB4056892 (OS Build 16299.192)](#priv-load-windows-kb4056892-os-build-16299192)
+   * [CPU Vendor response](#cpu-vendor-response)
+   * [Software/Service Vendor response](#softwareservice-vendor-response)
+   * [Future Speculation](#future-speculation)
+   * [References](#references)
+
 ## Common attack characteristics
 
 All of the attacks cause information disclosure from higher-privileged or
@@ -127,7 +148,7 @@ this sequence.
 Flush branch predictor state on privilege level changes and context switches.
 Causes some performance loss (how much?). Current CPUs do not implement a
 mechanism to do this this. Hyperthreading makes things more complicated, as two
-threads of diferent privilege level or isolation may be running on the same CPU
+threads of different privilege level or isolation may be running on the same CPU
 and sharing the branch prediction resources. Complete fix may require disabling
 hyperthreading or introducing OS scheduler changes to ensure that sibling
 threads are always owned by the same application/user/security context.
@@ -244,7 +265,9 @@ See [ARM Vendor Response](#arm-1) for source.
 ### IBM
 
 Red Hat [says](https://access.redhat.com/security/vulnerabilities/speculativeexecution)
-System Z, POWER8, POWER9 are affected. No further info.
+System Z, POWER8, POWER9 are affected.
+
+IBM says firmware patches will be available January 9 for POWER7 and up:  https://www.ibm.com/blogs/psirt/potential-impact-processors-power-family/
 
 ### Apple
 
@@ -280,7 +303,7 @@ Platforms:
 * AMD PRO CPU
 * ARM Cortex A57
 
-Not an actual attack against real software, just a PoC with synthetic code.
+Not an actual attack against real software, just a [PoC](https://gist.github.com/ErikAugust/724d4a969fb2c6ae1bbd7b2a9e3d4bb6) with synthetic code.
 
 ### [MISPREDICT] Google Project Zero: arbitrary kernel reads with eBPF JIT
 
@@ -330,9 +353,11 @@ Linux kernel page-table isolation. Shipped in Linux 4.14.11 and will ship in
 4.15. 4.14.11 version is rough around the edges; future versions should fix
 further issues.
 
-### [BTI] Linux: retpolines
+### [BTI] Linux/GCC/LLVM: retpolines
 
 * [Retpoline: a software construct for preventing branch-target-injection](https://support.google.com/faqs/answer/7625886)
+* [LLVM patch](https://reviews.llvm.org/D41723)
+* [GCC tree](http://git.infradead.org/users/dwmw2/gcc-retpoline.git/shortlog/refs/heads/gcc-7_2_0-retpoline-20171219)
 
 Still in development.
 
@@ -352,18 +377,26 @@ CPUs. Kernel implementation will likely enable it only when a vulnerable CPU is
 detected. In fact, it's insufficient on Skylake and newer CPUs, where even `ret`
 may predict from the indirect branch predictor as a fallback; those need IBRS.
 
-### [BTI] Linux: IBRS patch series
+### [BTI] Linux/QEMU: IBRS patches
 
-[Patchset](https://lkml.org/lkml/2018/1/4/615) (under review).
+* [Patchset](https://lkml.org/lkml/2018/1/4/615) (under review).
 
 Support for Intel's architectural mitigation in lieu of retpolines. Required
 on Skylake and newer, where even retpolines may be vulnerable. Requires
 microcode update on current CPUs. Perf hit vs. retpolines on older CPUs. Future
-CPUs will have "cheap" support.
+CPUs will have "cheap" support. This doesn't require userspace mitigation, as
+long as "full" mode is enabled (IBRS active in userspace too, non-default
+config).
 
-### [PRIV-LOAD] Windows: KB4056892 (OS Build 16299.192)
+Support to pass through this feature to guest OSes is required for this to work
+inside VMs:
 
-Out-of-band update. Presumably does roughly the same thing as KPTI.
+* [QEMU and the Spectre and Meltdown attacks](https://www.qemu.org/2018/01/04/spectre/)
+* [QEMU mailing list discussion](https://lists.nongnu.org/archive/html/qemu-devel/2018-01/msg00811.html)
+
+### [PRIV-LOAD + BTI] Windows: KB4056892 (OS Build 16299.192)
+
+Out-of-band update. Presumably does roughly the same thing as KPTI. Also [contains IBRS support](https://twitter.com/aionescu/status/948818841747955713).
 
 Some AV software is incompatible (probably due to evil kernel hooks). AV users
 require this registry key to be set for the fix to be enabled:
@@ -376,7 +409,9 @@ Type="REG_DWORD”
 Data="0x00000000”
 ```
 
-May also [contain IBRS support](https://twitter.com/aionescu/status/948818841747955713)?
+A PowerShell command has been [detailed](https://support.microsoft.com/en-us/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) (installable via `Install-Module SpeculationControl`) called `Get-SpeculationControlSettings` which shows the status of both mitigations.
+
+Microsoft mentions at this time server operating systems must explicitly enable mitigations.
 
 ## CPU Vendor response
 
@@ -512,6 +547,24 @@ Cloud Dataflow/Cloud Datalab/Cloud Dataproc/Cloud Launcher/Cloud Machine
 Learning Engine/Compute Engine/Kubernetes Engine need to be updated/restarted
 with fixes.
 
+### Amazon AWS
+
+* [Processor Speculative Execution Research Disclosure](https://aws.amazon.com/security/security-bulletins/AWS-2018-013/)
+
+Amazon scheduled maintenance reboots to update their infrastructure. Customers
+must patch guest OSes/kernels.
+
+### Microsoft Azure
+
+* [Securing Azure customers from CPU vulnerability](https://azure.microsoft.com/en-us/blog/securing-azure-customers-from-cpu-vulnerability/)
+
+MS scheduled maintenance reboots to update their infrastructure. They claim the
+vulnerability is mitigated at the hypervisor level and does not need guest
+updates, but that is almost certainly BS, since these vulnerabilities affect
+both inter-guest security (mitigated at HV) and intra-guest security (mitigated
+at guest). Users should still update their guest OSes to ensure they are
+protected.
+
 ### Apple
 
 * [About speculative execution vulnerabilities in ARM-based and Intel CPUs](https://support.apple.com/en-us/HT208394)
@@ -521,9 +574,9 @@ watchOS is not impacted. Claims no performance impact.
 
 Safari mitigations incoming for [BTI] and [MISPREDICT]. <2.5% perf impact.
 
-### RedHat
+### Red Hat
 
-[Advisory](https://access.redhat.com/security/vulnerabilities/speculativeexecution) and mitigations for CVE-2017-5754, CVE-2017-5753 and CVE-2017-5715 released. Expected [performance impact analysis](https://access.redhat.com/articles/3307751) on different scenarios released, based on RedHat's own testing. 
+[Advisory](https://access.redhat.com/security/vulnerabilities/speculativeexecution) and mitigations for CVE-2017-5754, CVE-2017-5753 and CVE-2017-5715 released. Expected [performance impact analysis](https://access.redhat.com/articles/3307751) on different scenarios released, based on Red Hat's own testing. 
 
 ### Ubuntu
 
@@ -533,6 +586,15 @@ Preliminary [Advisory](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/Spectr
 
 [Advisory](https://www.vmware.com/us/security/advisories/VMSA-2018-0002.html) and patches for ESXi 5.5, 6.0 and 6.5 released.
 Patch for ESXi 5.5 lacks mitigation for CVE-2017-5753.
+
+### Xen
+
+* [Xen Project Spectre/Meltdown FAQ](https://blog.xenproject.org/2018/01/04/xen-project-spectremeltdown-faq/)
+* [XSA=254](http://xenbits.xen.org/xsa/advisory-254.html)
+
+64-bit PV mode VMs can attack Xen with [PRIV-READ], but are immune to userspace
+attacks. Other VM modes are the opposite: the guest kernel is vulnerable to
+userspace attacks, but cannot attack Xen.
 
 ### Cisco
 
@@ -553,6 +615,8 @@ use them.
 * [Google Project Zero blog post](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html)
 * [Meltdown paper](https://meltdownattack.com/meltdown.pdf)
 * [Spectre paper](https://spectreattack.com/spectre.pdf)
+* [LWN summary of the vulnerabilities](https://lwn.net/SubscriberLink/742702/e23889188fce9f7f/)
+* [LWN collection of Meltdown/Spectre posting](https://lwn.net/Articles/742999/)
 * [ARM Processor Security Update](https://developer.arm.com/support/security-update)
 * [ARM Cache-speculation Side-channels whitepaper](https://developer.arm.com/-/media/Files/pdf/Cache_Speculation_Side-channels.pdf?revision=966364ce-10aa-4580-8431-7e4ed42fb90b&la=en)
 * [AMD Update on Processor Security](https://www.amd.com/en/corporate/speculative-execution)
@@ -562,12 +626,19 @@ use them.
 * [Intel Analysis of Speculative Execution Side Channels](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/01/Intel-Analysis-of-Speculative-Execution-Side-Channels.pdf)
 * [Windows 10 KB4056892](https://support.microsoft.com/en-us/help/4056892/windows-10-update-kb4056892)
 * [Chrome: Actions Required to Mitigate Speculative Side-Channel Attack Techniques](https://www.chromium.org/Home/chromium-security/ssca)
+* [Chrome: Mitigation with Site Isolation](http://www.chromium.org/Home/chromium-security/site-isolation)
 * [Mozilla: Mitigations landing for new class of timing attack](https://blog.mozilla.org/security/2018/01/03/mitigations-landing-new-class-timing-attack/)
 * [MS Edge/IE: Mitigating speculative execution side-channel attacks in Microsoft Edge and Internet Explorer](https://blogs.windows.com/msedgedev/2018/01/03/speculative-execution-mitigations-microsoft-edge-internet-explorer/)
 * [Google’s Mitigations Against CPU Speculative Execution Attack Methods](https://support.google.com/faqs/answer/7622138)
+* [AWS: Processor Speculative Execution Research Disclosure](https://aws.amazon.com/security/security-bulletins/AWS-2018-013/)
+* [Securing Azure customers from CPU vulnerability](https://azure.microsoft.com/en-us/blog/securing-azure-customers-from-cpu-vulnerability/)
 * [About speculative execution vulnerabilities in ARM-based and Intel CPUs](https://support.apple.com/en-us/HT208394)
 * [Retpoline: a software construct for preventing branch-target-injection](https://support.google.com/faqs/answer/7625886)
 * [VMSA-2018-0002VMware ESXi, Workstation and Fusion updates address side-channel analysis due to speculative execution](https://www.vmware.com/us/security/advisories/VMSA-2018-0002.html)
 * [Redhat: Kernel Side-Channel Attacks - CVE-2017-5754 CVE-2017-5753 CVE-2017-5715](https://access.redhat.com/security/vulnerabilities/speculativeexecution)
 * [Ubuntu: Information Leak via speculative execution side channel attacks (CVE-2017-5715, CVE-2017-5753, CVE-2017-5754 aka Spectre and Meltdown)](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/SpectreAndMeltdown)
 * [Cisco: CPU Side-Channel Information Disclosure Vulnerabilities](https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180104-cpusidechannel)
+<<<<<<< HEAD
+=======
+* [QEMU and the Spectre and Meltdown attacks](https://www.qemu.org/2018/01/04/spectre/)
+>>>>>>> upstream/master
