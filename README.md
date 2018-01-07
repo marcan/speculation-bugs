@@ -590,8 +590,8 @@ Preliminary [Advisory](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/Spectr
 
 ### VMware
 
-*[Advisory](https://www.vmware.com/us/security/advisories/VMSA-2018-0002.html) and patches for ESXi 5.5, 6.0 and 6.5 released. Patch for ESXi 5.5 lacks mitigation for CVE-2017-5753.
-*[Advisory](https://kb.vmware.com/s/article/52264) about affected VMware's virtual appliances and impact status.
+* [Advisory](https://www.vmware.com/us/security/advisories/VMSA-2018-0002.html) and patches for ESXi 5.5, 6.0 and 6.5 released. Patch for ESXi 5.5 lacks mitigation for CVE-2017-5753.
+* [Advisory](https://kb.vmware.com/s/article/52264) about affected VMware's virtual appliances and impact status.
 
 ### Xen
 
