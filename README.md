@@ -590,7 +590,7 @@ Patch for ESXi 5.5 lacks mitigation for CVE-2017-5753.
 ### Xen
 
 * [Xen Project Spectre/Meltdown FAQ](https://blog.xenproject.org/2018/01/04/xen-project-spectremeltdown-faq/)
-* [XSA=254](http://xenbits.xen.org/xsa/advisory-254.html)
+* [XSA-254](http://xenbits.xen.org/xsa/advisory-254.html)
 
 64-bit PV mode VMs can attack Xen with [PRIV-READ], but are immune to userspace
 attacks. Other VM modes are the opposite: the guest kernel is vulnerable to
