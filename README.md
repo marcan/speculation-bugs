@@ -606,6 +606,10 @@ userspace attacks, but cannot attack Xen.
 
 * [Advisory](https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180104-cpusidechannel) available with list of products currently under investigation, affected products and potential fix availability (current expected date 18-Feb-2018). Relevant for Cisco UCS server product range, that require microcode update to resolve the issue.
 
+### Scaleway
+
+* [Advisory](https://www.scaleway.com/meltdown-spectre-status/) available with list of products currently under investigation, affected products and mitigated products. Shows all supported distros as well as all Scaleway services and online.net products.
+
 ## Future Speculation
 
 [BTI], [PRIV-READ], and [PRIV-REG] are CPU implementation bugs that are easily
@@ -646,3 +650,4 @@ use them.
 * [Ubuntu: Information Leak via speculative execution side channel attacks (CVE-2017-5715, CVE-2017-5753, CVE-2017-5754 aka Spectre and Meltdown)](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/SpectreAndMeltdown)
 * [Cisco: CPU Side-Channel Information Disclosure Vulnerabilities](https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180104-cpusidechannel)
 * [QEMU and the Spectre and Meltdown attacks](https://www.qemu.org/2018/01/04/spectre/)
+* [Scaleway Spectre and Meltdown status page](https://www.scaleway.com/meltdown-spectre-status/)
