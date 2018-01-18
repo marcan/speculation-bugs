@@ -28,7 +28,7 @@ Table of Contents
       * [[PRIV-LOAD] Linux: KPTI](#priv-load-linux-kpti)
       * [[BTI] Linux/GCC/LLVM: retpolines](#bti-linuxgccllvm-retpolines)
       * [[BTI] Linux/QEMU: IBRS patches](#bti-linuxqemu-ibrs-patches)
-      * [[PRIV-LOAD] Windows: KB4056892 (OS Build 16299.192)](#priv-load-windows-kb4056892-os-build-16299192)
+      * [[PRIV-LOAD + BTI] Windows: KB4056892 (OS Build 16299.192)](#priv-load-bti-windows-kb4056892-os-build-16299192)
    * [CPU Vendor response](#cpu-vendor-response)
    * [Software/Service Vendor response](#softwareservice-vendor-response)
    * [Future Speculation](#future-speculation)
