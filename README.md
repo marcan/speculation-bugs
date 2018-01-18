@@ -21,6 +21,7 @@ Table of Contents
       * [[BTI] Branch Target Injection](#bti-branch-target-injection)
       * [[PRIV-LOAD] Privileged data reads from unprivileged code](#priv-load-privileged-data-reads-from-unprivileged-code))
       * [[PRIV-REG] Privileged register reads from unprivileged code](#priv-reg-privileged-register-reads-from-unprivileged-code)
+      * [Alternate side channels](#alternate-side-channels)
    * [Impacted CPU matrix](#impacted-cpu-matrix)
    * [PoCs](#pocs)
    * [Deployed or in-development mitigations](#deployed-or-in-development-mitigations)
@@ -199,6 +200,20 @@ is being read.
 * JIT: Not possible.
 * Same-cpu cross-privilege: Easy, but limited impact.
 * Remote/service: Not possible.
+
+### Alternate side channels
+
+The above examples use a data-dependent load to leak information from the
+speculatively executed instructions via the local cache. However, this is not
+the only possible side channel. Other examples could be data-dependent loads
+where what is measured instead is system memory bandwidth impact or the effects
+on other cores (e.g. data cached on one core is accessed on another core),
+the effects on execution units that can be measured via timing or from another
+thread (e.g. conditional execution of an instruction that issues to a given
+functional unit), the timing of variable-cycle-count instructions and their
+effect on functional unit occupation (e.g. DIV), and probably others. This
+is orthogonal to the three attacks described above, and any such technique
+could be applied to any given attack.
 
 ## Impacted CPU matrix
 
