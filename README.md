@@ -257,7 +257,7 @@ no counterexamples are known yet.
 
 | CPU/µArch                      | MISPREDICT              | BTI                      | PRIV-LOAD               | PRIV-REG |
 | ------------------------------ | ----------------------- | ------------------------ | ----------------------- | -------- |
-| Zen (17h)                      | Y<sup>[1](#amd-1)</sup> | Y?<sup>[1](#amd-1)</sup> | N<sup>[1](#amd-1)</sup> |          |
+| Zen (17h)                      | Y<sup>[1](#amd-1)</sup> | Y<sup>[1](#amd-1)</sup> | N<sup>[1](#amd-1)</sup> |          |
 
 ### ARM
 
