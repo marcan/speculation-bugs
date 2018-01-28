@@ -19,7 +19,7 @@ Table of Contents
    * [Attacks](#attacks)
       * [[MISPREDICT] Branch mis-prediction leaks subsequent data](#mispredict-branch-mis-prediction-leaks-subsequent-data)
       * [[BTI] Branch Target Injection](#bti-branch-target-injection)
-      * [[PRIV-LOAD] Privileged data reads from unprivileged code](#priv-load-privileged-data-reads-from-unprivileged-code))
+      * [[PRIV-LOAD] Privileged data reads from unprivileged code](#priv-load-privileged-data-reads-from-unprivileged-code)
       * [[PRIV-REG] Privileged register reads from unprivileged code](#priv-reg-privileged-register-reads-from-unprivileged-code)
       * [Alternate side channels](#alternate-side-channels)
    * [Impacted CPU matrix](#impacted-cpu-matrix)
